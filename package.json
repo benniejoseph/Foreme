@@ -1,0 +1,73 @@
+{
+    "name": "Foreme",
+    "description": "E-commerce Site",
+    "version": "0.0.1",
+    "author": "Bennie Richard",
+    "bugs": "https://github.com/benniejoseph/Foreme/issues",
+    "dependencies": {
+        "compression": "^1.7.4",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "helmet": "^4.6.0",
+        "jsforce": "^1.10.1",
+        "tailwind": "^4.0.0",
+        "winston": "^3.3.3",
+        "@lwc/synthetic-shadow": "^2.3.0",
+        "twind": "^0.16.16"
+    },
+    "engines": {
+        "node": ">=10.13.0",
+        "npm": ">=6.4.1",
+        "yarn": ">=1.9.4"
+    },
+    "homepage": "https://github.com/benniejoseph/Foreme",
+    "keywords": [
+        "lwc"
+    ],
+    "license": "MIT",
+    "nodemonConfig": {
+        "watch": [
+            "src/server/**/*.js"
+        ],
+        "ext": "js",
+        "ignore": [
+            "src/**/*.spec.js",
+            "src/**/*.test.js"
+        ],
+        "exec": "node ./src/server/api.js"
+    },
+    "repository": "benniejoseph/Foreme",
+    "scripts": {
+        "build": "lwc-services build -m production",
+        "build:development": "lwc-services build -w scripts/webpack.config.js",
+        "lint": "eslint ./src/**/*.js",
+        "postinstall": "husky install",
+        "precommit": "npm run prettier:verify && [ $? -eq 0 ] && npm run lint",
+        "prettier": "prettier --write \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "prettier:verify": "prettier --list-different \"**/*.{css,html,js,json,md,ts,yaml,yml}\"",
+        "start": "run-p start:client start:api",
+        "start:api": "node src/server/api.js",
+        "start:client": "node scripts/server.js",
+        "test:unit": "lwc-services test:unit",
+        "test:unit:coverage": "lwc-services test:unit --coverage",
+        "test:unit:debug": "lwc-services test:unit --debug",
+        "test:unit:watch": "lwc-services test:unit --watch",
+        "watch": "run-p watch:client watch:server",
+        "watch:client": "lwc-services watch",
+        "watch:server": "nodemon"
+    },
+    "devDependencies": {
+        "eslint": "^7.32.0",
+        "eslint-plugin-inclusive-language": "^2.1.1",
+        "husky": "^7.0.4",
+        "lint-staged": "^10.5.4",
+        "lwc-services": "^3.2.2",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.4.1",
+        "postcss": "^8.3.11",
+        "postcss-cli": "^8.2.0",
+        "tailwindcss": "^2.2.19",
+        "cross-env": "^7.0.2"
+    }
+}
